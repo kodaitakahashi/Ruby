@@ -20,7 +20,7 @@ loop {
     
     #顔検出された犯意でRGB(f0,f0,f0)以外の時置き換え
     (image.rows * image.cols).times do |j|
-      image[j] = resize_faceimage[j] if resize_faceimage[j][0] != 0.0 && resize_faceimage[j][1] != 0.0 && resize_faceimage[j][2] != 0.0
+      image[j] = resize_faceimage[j] if resize_faceimage[j][0] != 255.0 && resize_faceimage[j][1] != 255.0 && resize_faceimage[j][2] != 255.0
     end
     image.reset_roi
   end
