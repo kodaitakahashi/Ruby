@@ -1,0 +1,10 @@
+
+class Test
+
+  def  at_Get(num,num1){
+      return num*num1
+    end
+end
+
+
+print Test::atGet(2,4)

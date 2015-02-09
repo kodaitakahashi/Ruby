@@ -1,0 +1,21 @@
+#-*- coding: ascii-8bit -*-
+
+require 'anemone'
+
+URL = 'http://konbu13.hatenablog.com/'
+REGEXP = /archive/
+
+
+Anemone.craw1(URL) do |anemone|
+  anemone.focus_craw1 do |page| #クロールごとに読み出される
+    page.links.keep_if{ |link|
+      link.to_s.match(REGEXP)
+    }
+
+end
+
+anemone.on.every_page do |page|
+    print page.doc.at('title').inner_html
+  end
+
+end
