@@ -1,0 +1,14 @@
+#-*- coding: ascii-8bit -*-
+require 'rubygem'
+require 'flickraw'
+
+#ロードパスにカレントディレクトを追加
+$:.unshift File.dirname(__FILE__)
+require 'Flickr_updoads.rb'
+
+myflickr_uploads = MyFlickr.new
+if ARGV.size == 1 then
+  myflickr_uploads.upload_photos ARGV[0]
+else
+  myflickr_uploads.upload_photos
+end
