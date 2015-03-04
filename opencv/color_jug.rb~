@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+# color_jug.rb
+require "rubygems"
+require "opencv"
+
+include OpenCV
+
+
+faceimage = IplImage::load './jonouchi.jpg'
+
+print faceimage[0][0]

@@ -9,7 +9,7 @@ include OpenCV
 window = GUI::Window.new("face detect")
 capture = CvCapture.open
 detector = CvHaarClassifierCascade::load("./haarcascade_frontalface_alt.xml")
-faceimage = IplImage.load './jonouchi.jpg'
+faceimage = IplImage::load './jonouchi.jpg'
 loop {
   image = capture.query #キャプチャーの問い合わせ
   #顔認識処理

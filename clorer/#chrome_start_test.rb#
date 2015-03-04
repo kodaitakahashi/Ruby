@@ -1,0 +1,14 @@
+# -*- coding: ascii-8bit -*-
+
+# selenium-webdriverを読み込む
+require 'selenium-webdriver'
+# WebDriverを使ってChroemを起動
+driver = Selenium::WebDriver.for :chrome
+# 2秒待機
+sleep 2
+# 'https://google.com'にアクセス
+driver.get('https://google.com');
+# 2秒待機
+sleep 2
+# WebDriverから起動したChroemを終了
+driver.quit

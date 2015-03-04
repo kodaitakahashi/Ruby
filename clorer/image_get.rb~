@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+require 'anemone'
+require 'nokogiri'
+require 'kconv'
+require 'uri'
+

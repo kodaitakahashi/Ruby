@@ -13,7 +13,7 @@ loop {
   image = capture.query #キャプチャーの問い合わせ
   #顔認識処理
   detector.detect_objects(image).each { |rect|
-    image.rectangle! rect.top_left, rect.bottom_right, :color => CvColor::Green
+    image.rectangle!(rect.top_left, rect.bottom_right, :color => CvColor::Green)
   } #rectに顔として検出したいimgに処理をする
   window.show image
   #終了処理

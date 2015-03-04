@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+require 'capybara'
+require 'capybara/dsl'
+require 'selenium-webdriver'
+
+#初期設定
+#デフォルトではRackアプリケーションの起動するため起動させないようにfalseに設定
+Capybara.run_server = false 
+#デフォルトは:racj_testのため、JavaScriptの実行や外部のHTTP通信などができないため:seleniumnに設定
+Capybara.current_driver = Selenium::WebDriver.for :chrome
+#対象サイトのURLを設定
+Capybara.app_host = "https://evernote.com/"
+
+module Crawler
+  class Evernote
+    include Capybara::DSL
+    
+    def search_login
+      visit('')
+      click_link("Sign\ in")
+    end
+  end
+end
+
+
+crawler = Crawler::Evernote.new
+crawler.search_login

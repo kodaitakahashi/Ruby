@@ -3,7 +3,7 @@ require 'flickraw'
 require 'rubygems'
 
 def makedir()
-  puts " カレントディレクトリにuploadsフォルダがあるか調べています…"
+u  puts " カレントディレクトリにuploadsフォルダがあるか調べています…"
   if File::exists?("uploads") == false 
     Dir::mkdir("./uploads")
     puts "カレントディレクトリにuploadsディレクトリを作りました"

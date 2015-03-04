@@ -1,0 +1,29 @@
+# -*- coding: ascii-8bit -*-
+require 'capybara'
+require 'capybara/dsl'
+require 'selenium-webdriver'
+
+#初期設定
+#ブラウザの設定
+Capybara.register_driver :seleniu do |app|
+  Capybara::Selenium::Driver.new(app,:browser => :chrome)
+end
+#Rackの起動なし
+Capybara.run_server = false
+Capybara.current_driver = :selenium
+Capybara.app_host = "http://www.rakuten.co.jp/"
+Capybara.default_wait_time = 10
+
+module Crawler
+  class Rakuten_Ranking
+    include Capybara::DSL
+
+    def ranking_link
+      vist('')
+      click_on(:xpath,"//*[@id=\"ritNaviTab\"]/li[2]")
+    end
+  end
+end
+
+crawler = Crawler::Rakuten.new
+crawler.ranking_link
