@@ -23,7 +23,6 @@ Dir.glob('*.{jpg,jpeg,png}',File::FNM_CASEFOLD).each do |filename|
     #grayimageをヒストグラムの均一化にする
     grayimage_equalize_hist = grayimage.equalize_hist
     Dir.chdir("../result")
-    grayimage_equalize_hist.save(File::basename(filename))
   rescue => ex
     puts("失敗")
     puts ex.message
