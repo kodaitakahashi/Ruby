@@ -8,7 +8,7 @@ class Pdf
 
   def initialize()
     @loadpdf = nil
-    @splitimgs = Array.new
+    @splitimges = Array.new
   end
   def load(file = "")
     begin
@@ -22,10 +22,11 @@ class Pdf
   def split
     begin
     @loadpdf.each do  |img|
-      @splitimgs.push(img)
+        @splitimges.push(img)
       end
-    rescue
-      print "分割時に不具合が起きました"
+      print "分割が完了しました"
+    rescue => ex
+      print "エラーが起きました => #{ex}"
     end
   end
   def construct(out_fname="hogehoge")
@@ -48,9 +49,14 @@ class Kindle < Pdf
     @Resize_y = 905
     super()
   end
-  def resize_img
-    for img in @splitimgs.length
+  def kindle_img_resize
+    begin
+    @splitimges.each do |img|
       img.resize(@Resize_x,@Resize_y)
+      end
+      print "リサイズが完了しました"
+    rescue => ex
+      print "リサイズ時にエラーが起きました => #{ex}"
     end
   end
 end
@@ -58,8 +64,8 @@ end
 out_fname = ARGV[1]
 in_pdf = ARGV[0]
 
-pdf = Kindle.new(in_pdf)
+pdf = Kindle.new()
 pdf.load(in_pdf)
-#pdf.split
-#pdf.resize_img
+pdf.split
+pdf.kindle_img_resize
 #pdf.construct(out_fname)
